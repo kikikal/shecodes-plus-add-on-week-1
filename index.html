@@ -10,11 +10,21 @@
   <body>
     <form>
       <select name="cities" id="cities">
-        <option value="paris">Paris 🇫🇷</option>
-        <option value="tokyo">Tokyo 🇯🇵</option>
-        <option value="sydney">Sydney 🇦🇺</option>
+        <option value="Europe/Paris">Paris 🇫🇷</option>
+        <option value="Asia/Tokyo">Tokyo 🇯🇵</option>
+        <option value="Australia/Sydney">Sydney 🇦🇺</option>
       </select>
     </form>
   </body>
-  <script src="src/index.js"></script>
+  <script>
+    function timeZoneAlert(event) {
+      alert(
+        `it is ${moment
+          .tz(event.target.value)
+          .format("dddd, MMMM D, YYYY h:mm A")} in ${event.target.value}`
+      );
+    }
+    let city = document.querySelector("#cities");
+    city.addEventListener("change", timeZoneAlert);
+  </script>
 </html>
